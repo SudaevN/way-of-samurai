@@ -1,0 +1,10 @@
+.wrapFooter {
+    grid-area: f;
+
+    background-color: #424242;
+    color: #f2f2f2;
+}
+
+.name {
+    color: red;
+}

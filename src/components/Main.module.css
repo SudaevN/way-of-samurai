@@ -1,0 +1,6 @@
+.wrapMain {
+    grid-area: m;
+    overflow-y: scroll;
+
+    color: #424242;
+}

@@ -1,0 +1,10 @@
+.wrapHeader {
+    grid-area: h;
+
+    background-color: #424242;
+    color: #f2f2f2;
+}
+
+.name {
+    color: green;
+}
