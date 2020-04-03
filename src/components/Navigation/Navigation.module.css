@@ -1,0 +1,24 @@
+.wrapNav {
+    grid-area: n;
+
+    background-color: #4d70a2;
+    color: #f2f2f2;
+    padding: 30px 20px;
+    overflow-y: scroll;
+}
+
+.item {
+    display: block;
+    text-decoration: none;
+    color: #f2f2f2;
+    font-weight: 400;
+}
+
+.item.active {
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.item:hover {
+    text-decoration: underline;
+}

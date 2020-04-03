@@ -1,0 +1,25 @@
+.item {
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #2c2c2c;
+    background-color: #EBEBEB;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-bottom: 15px;
+}
+.item:last-child {
+    margin-bottom: 0;
+}
+
+img {
+    display: block;
+    width: 90px;
+}
+
+p {
+    color: #2c2c2c;
+    font-weight: 300;
+    padding: 0 20px;
+    margin: 0;
+}
