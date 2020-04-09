@@ -4,15 +4,18 @@ import Header from "./components/Header/Header";
 import Navigation from "./components/Navigation/Navigation";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
+import {BrowserRouter} from "react-router-dom";
 
-const App = () => {
+const App = (props) => {
     return (
-        <div className="wrapApp">
-            <Header/>
-            <Navigation/>
-            <Main/>
-            <Footer/>
-        </div>
+        <BrowserRouter>
+            <div className="wrapApp">
+                <Header/>
+                <Navigation/>
+                <Main state={props.state} addMessage={props.addMessage}/>
+                <Footer/>
+            </div>
+        </BrowserRouter>
     );
 };
 

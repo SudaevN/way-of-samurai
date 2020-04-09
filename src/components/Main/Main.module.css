@@ -1,6 +1,6 @@
 .wrapMain {
     grid-area: m;
-    overflow-y: scroll;
     color: #424242;
     padding: 10px;
+    overflow-y: scroll;
 }

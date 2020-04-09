@@ -3,8 +3,14 @@
 
     background-color: #424242;
     color: #f2f2f2;
+    font-family: 'Star Jedi';
+    text-align: left;
+    padding: 0 30px;
 }
 
 .name {
-    color: green;
+    display: inline-block;
+    font-size: 32px;
+    line-height: 60px;
+    vertical-align: middle;
 }

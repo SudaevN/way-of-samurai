@@ -4,7 +4,7 @@ import classes from './Header.module.css';
 const Header = () => {
     return (
         <header className={classes.wrapHeader}>
-            <span className={classes.name}>Общалка</span>
+            <span className={classes.name}>STARNET</span>
         </header>
     );
 }

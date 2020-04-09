@@ -1,8 +1,13 @@
+@font-face {
+    font-family: 'Star Jedi';
+    src: url("./components/fonts/Star_Wars/SF_Distant_Galaxy.ttf");
+}
+
 .wrapApp {
     display: grid;
 
     grid-template:
-            "h h" 40px
-            "n m" calc(100vh - 80px)
-            "f f" 40px / 200px auto;
+            "h h" 60px
+            "n m" calc(100vh - 120px)
+            "f f" 60px / 200px auto;
 }
