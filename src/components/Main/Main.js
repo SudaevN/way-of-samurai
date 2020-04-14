@@ -13,7 +13,7 @@ const Main = (props) => {
             <Route path={'/chats'} render={ () => <Chats messageData={props.state.chatsData}/> } />
             <Route path={'/contacts'} render={ () => <Contacts contactsData={props.state.contactsData}/> } />
             <Route path={'/profile'} render={ () => <Profile postsData={props.state.postsData} /> } />
-            <Route path={'/dialog'} render={ () => <Dialog dialogData={props.state.dialogsData.luke} addMessage={props.addMessage}/> } />
+            <Route path={'/dialog'} render={ () => <Dialog dialogData={props.state.dialogsData.luke} addMessage={props.addMessage} refreshMessageText={props.refreshMessageText} newMessageText={props.state.dialogsData.newMessageText}/> } />
         </div>
     );
 }

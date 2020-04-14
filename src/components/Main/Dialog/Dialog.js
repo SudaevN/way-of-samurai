@@ -7,10 +7,15 @@ const Dialog = (props) => {
     let newMessage = React.createRef();
 
     let sendMessage = () => {
-        let text = newMessage.current.value;
-        props.addMessage(text);
-        newMessage.current.value = '';
-    }
+        if (props.newMessageText != '') {
+            props.addMessage();
+        }
+    };
+
+    let onChangeMessage = () => {
+        let newText = newMessage.current.value;
+        props.refreshMessageText(newText);
+    };
 
     let messagesItem = props.dialogData.map( message => <Message key={message.id} right={message.right} authorAva={message.authorAva} message={message.message} /> )
     return (
@@ -19,11 +24,11 @@ const Dialog = (props) => {
                 {messagesItem}
             </div>
             <div className={classes.chatInputWrap}>
-                <textarea ref={newMessage} className={classes.dialogInpt} rows="5"></textarea>
+                <textarea ref={newMessage} className={classes.dialogInpt} rows="5" value={props.newMessageText} onChange={onChangeMessage} />
                 <button className={classes.sendBtn} onClick={ sendMessage }>send message</button>
             </div>
         </div>
     )
-}
+};
 
 export default Dialog;

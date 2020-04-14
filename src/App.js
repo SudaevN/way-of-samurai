@@ -12,7 +12,7 @@ const App = (props) => {
             <div className="wrapApp">
                 <Header/>
                 <Navigation/>
-                <Main state={props.state} addMessage={props.addMessage}/>
+                <Main state={props.state} addMessage={props.addMessage} refreshMessageText={props.refreshMessageText}/>
                 <Footer/>
             </div>
         </BrowserRouter>
