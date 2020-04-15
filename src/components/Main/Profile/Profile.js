@@ -3,6 +3,7 @@ import classes from './Profile.module.css';
 import Posts from "./Posts/Posts";
 import Post from "./Posts/Post/Post";
 
+
 const Profile = (props) => {
 
     return (
@@ -16,7 +17,7 @@ const Profile = (props) => {
                     <span className={classes.profileStatus}>Join me, and together, we can rule the galaxy as father and son!</span>
                 </div>
             </div>
-            <Posts postsData={props.postsData}/>
+            <Posts postsData={props.postsData} dispatch={props.dispatch}/>
         </div>
     );
 }
