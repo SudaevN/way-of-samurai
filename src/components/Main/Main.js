@@ -11,8 +11,8 @@ const Main = (props) => {
 
     return (
         <div className={classes.wrapMain}>
-            <Route path={'/chats'} render={ () => <Chats messageData={props.state.chatsData}/> } />
-            <Route path={'/contacts'} render={ () => <Contacts contactsData={props.state.contactsData}/> } />
+            <Route path={'/chats'} render={ () => <Chats messageData={props.store.getState().chatsData}/> } />
+            <Route path={'/contacts'} render={ () => <Contacts contactsData={props.store.getState().contactsData}/> } />
             <Route path={'/profile'} render={ () => <Profile store={props.store} /> } />
             <Route path={'/dialog'} render={ () => <DialogContainer store={props.store} /> } />
         </div>

@@ -17,8 +17,10 @@ const DialogContainer = (props) => {
 
     let state = props.store.getState();
     let messagesItems = state.dialogsData.luke.map(message => <Message key={message.id} right={message.right} authorAva={message.authorAva} message={message.message}/>);
+
+    let newMessageText = state.dialogsData.newMessageText;
     return (
-        <Dialog sendMessage={sendMessage} refreshMessage={refreshMessage} messagesItems={messagesItems} />
+        <Dialog sendMessage={sendMessage} refreshMessage={refreshMessage} messagesItems={messagesItems} newMessageText={newMessageText}/>
     )
 
 };
