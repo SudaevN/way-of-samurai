@@ -3,8 +3,9 @@ import classes from './Main.module.css';
 import Chats from "./Chats/Chats";
 import Contacts from "./Contacts/Contacts";
 import Profile from "./Profile/Profile";
-import Dialog from "./Dialog/Dialog";
 import {Route} from "react-router-dom";
+import DialogContainer from "./Dialog/DialogContainer";
+
 
 const Main = (props) => {
 
@@ -12,10 +13,10 @@ const Main = (props) => {
         <div className={classes.wrapMain}>
             <Route path={'/chats'} render={ () => <Chats messageData={props.state.chatsData}/> } />
             <Route path={'/contacts'} render={ () => <Contacts contactsData={props.state.contactsData}/> } />
-            <Route path={'/profile'} render={ () => <Profile postsData={props.state.postsData} dispatch={props.dispatch}/> } />
-            <Route path={'/dialog'} render={ () => <Dialog dialogData={props.state.dialogsData.luke} newMessageText={props.state.dialogsData.newMessageText} dispatch={props.dispatch}/> } />
+            <Route path={'/profile'} render={ () => <Profile store={props.store} /> } />
+            <Route path={'/dialog'} render={ () => <DialogContainer store={props.store} /> } />
         </div>
     );
-}
+};
 
 export default Main;

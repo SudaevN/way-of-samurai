@@ -17,9 +17,9 @@ const Profile = (props) => {
                     <span className={classes.profileStatus}>Join me, and together, we can rule the galaxy as father and son!</span>
                 </div>
             </div>
-            <Posts postsData={props.postsData} dispatch={props.dispatch}/>
+            <Posts store={props.store}/>
         </div>
     );
-}
+};
 
 export default Profile;

@@ -1,7 +1,8 @@
-const   REFRESH_MESSAGE_TEXTAREA = 'REFRESH-MESSAGE',
-        ADD_MESSAGE = 'ADD-MESSAGE',
-        REFRESH_POST_TEXT = 'REFRESH-POST-TEXT',
-        ADD_POST = 'ADD-POST';
+import profileReducer from "./profile-reducer";
+import dialogReducer from "./dialog-reducer";
+import contactsReducer from "./contacts-reducer";
+import chatsReducer from "./chats-reducer";
+
 
 let store = {
     _state: {
@@ -123,53 +124,15 @@ let store = {
         this._rerenderEntireTree = observer;
     },
     dispatch(action) {
-        if (action.type === ADD_MESSAGE) {
-            let message = this._state.dialogsData.newMessageText;
-            if (message !== '') {
-                let newMessage = {
-                    id: this._state.dialogsData.luke.length + 1,
-                    right: true,
-                    authorAva: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS2jv29amhL_Fikcw4cIv1QB9FRcDOiO2DsU8q2t1Z1wCBYMFWK&usqp=CAU",
-                    message: this._state.dialogsData.newMessageText
-                };
-                this._state.dialogsData.luke.push(newMessage);
-                this._state.dialogsData.newMessageText = '';
-                this._rerenderEntireTree(this._state);
-            }
-        } else if (action.type === REFRESH_MESSAGE_TEXTAREA) {
-            this._state.dialogsData.newMessageText = action.text;
-            this._rerenderEntireTree(this._state);
-        } else if (action.type === ADD_POST) {
-            let text = this._state.postsData.newPostText;
-            if (text !== '') {
-                let newPost = {
-                    postId: this._state.postsData.dart.length + 1,
-                    picUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/2a/SkywalkerFlagship-TU.png/revision/latest?cb=20150409051518",
-                    title: "Without title",
-                    text: this._state.postsData.newPostText,
-                    date: "15.03.2020"
-                };
-                this._state.postsData.dart.push(newPost);
-                this._state.postsData.newPostText = '';
-                this._rerenderEntireTree(this._state);
-            }
-        }
-        else if (action.type === REFRESH_POST_TEXT) {
-            this._state.postsData.newPostText = action.text;
-            this._rerenderEntireTree(this._state);
-        }
-        else {
-            console.log('Somthing wrong =(');
-            console.log(action);
-        }
 
+        this._state.postsData = profileReducer(this._state.postsData, action);
+        this._state.dialogsData = dialogReducer(this._state.dialogsData, action);
+        this._state.contactsData = contactsReducer(this._state.contactsData, action);
+        this._state.chatsData = chatsReducer(this._state.chatsData, action);
+
+        this._rerenderEntireTree(this._state);
     }
 };
-
-export const sendActionCreator = () => ({type: ADD_MESSAGE});
-export const refreshActionCreator = (newText) => ({type: REFRESH_MESSAGE_TEXTAREA, text: newText});
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const refreshPostActionCreator = (newPostText) => ({type: REFRESH_POST_TEXT, text: newPostText});
 
 
 export default store;

@@ -6,13 +6,14 @@ import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 import {BrowserRouter} from "react-router-dom";
 
+
 const App = (props) => {
     return (
         <BrowserRouter>
             <div className="wrapApp">
                 <Header/>
                 <Navigation/>
-                <Main state={props.state} dispatch={props.dispatch}/>
+                <Main store={props.store}/>
                 <Footer/>
             </div>
         </BrowserRouter>
