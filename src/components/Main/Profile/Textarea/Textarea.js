@@ -16,9 +16,10 @@ const Textarea = (props) => {
 
     return (
         <div className={classes.textarea}>
-            <textarea className={classes.postInpt} rows="10" value={props.newPostText} onChange={onChangeText}/>
+            <textarea className={classes.postInpt} rows="5" value={props.newPostText} onChange={onChangeText}/>
             <button className={classes.addBtn} onClick={addPost}>+ Add post</button>
         </div>
+
     )
 };
 

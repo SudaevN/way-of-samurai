@@ -1,38 +1,3 @@
 .profile {
     padding: 10px;
 }
-
-.profileInfo {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-items: flex-start;
-}
-
-.profilePicture {
-    width: 90px;
-    margin-right: 20px;
-}
-
-.profilePicture img {
-    width: 100%;
-}
-
-.profileDescription {
-    flex-grow: 1;
-}
-
-.profileName,
-.profileStatus {
-    display: block;
-}
-
-.profileName {
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.profileStatus {
-    font-size: 14px;
-    font-weight: 400;
-}

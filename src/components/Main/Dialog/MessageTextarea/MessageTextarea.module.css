@@ -1,0 +1,45 @@
+.chatInputWrap {
+    position: relative;
+}
+
+.dialogInpt {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #a9a9a9;
+    border-radius: 5px;
+    padding: 8px;
+    outline: none;
+    transition: all 0.2s ease;
+    resize: none;
+}
+
+.dialogInpt:focus {
+    box-shadow: 0 0 5px #4d70a2;
+}
+
+.sendBtn {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    font-size: 0;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: transparent;
+    background-image: url("https://steamuserimages-a.akamaihd.net/ugc/916953854628560255/4B99318E996A557E0A42AAE4D916BB2F3BD07DFB/");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    outline: none;
+    border: 2px solid #a9a9a9;
+    cursor: pointer;
+}
+.sendBtn:hover {
+
+}
+
+.sendBtn:active {
+    box-shadow: inset 3px 3px 3px rgba(0,0,0,0.5);
+}
