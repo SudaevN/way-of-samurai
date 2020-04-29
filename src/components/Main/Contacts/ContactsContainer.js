@@ -1,23 +1,14 @@
 import React from "react";
 import Contact from "./Contact/Contact";
-import StoreContext from "../../../storeContext";
 import Contacts from "./Contacts";
+import {connect} from "react-redux";
 
-
-const ContactsContainer = () => {
-
-    return (
-        <StoreContext.Consumer>
-            {
-                (store) => {
-
-                    let contactsElements = store.getState().contactsData.map( contact => <Contact key={contact.id} id={contact.id} name={contact.name} status={contact.status} picUrl={contact.picUrl}/> )
-
-                    return <Contacts contactsElements={contactsElements}/>
-                }
-            }
-        </StoreContext.Consumer>
-    )
+const mapStateToProps = (state) => {
+    return {
+        contactsElements: state.contactsData.map(contact => <Contact key={contact.id} id={contact.id} name={contact.name} status={contact.status} picUrl={contact.picUrl}/>)
+    }
 };
+
+const ContactsContainer = connect(mapStateToProps)(Contacts)
 
 export default ContactsContainer;

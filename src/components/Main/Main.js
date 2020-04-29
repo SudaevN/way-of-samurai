@@ -5,12 +5,14 @@ import DialogContainer from "./Dialog/DialogContainer";
 import ProfileContainer from "./Profile/ProfileContainer";
 import ContactsContainer from "./Contacts/ContactsContainer";
 import ChatsContainer from "./Chats/ChatsContainer";
+import UsersContainer from "./Users/UsersContainer";
 
 
 const Main = () => {
 
     return (
         <div className={classes.wrapMain}>
+            <Route path={'/users'} render={ () => <UsersContainer/> } />
             <Route path={'/chats'} render={ () => <ChatsContainer /> } />
             <Route path={'/contacts'} render={ () => <ContactsContainer /> } />
             <Route path={'/profile'} render={ () => <ProfileContainer /> } />

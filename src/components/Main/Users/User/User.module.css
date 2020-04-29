@@ -1,0 +1,47 @@
+.userBox {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.userAva {
+    display: block;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #f2f2f2;
+    margin-right: 15px;
+    box-sizing: border-box;
+}
+
+.rightSide {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.aboutUser {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1;
+}
+
+.name {
+    font-weight: 700;
+}
+
+.status,
+.homePlanet {
+    font-size: 12px;
+    color: #424242;
+}
+
+.friendBtn {
+    margin-top: auto;
+}

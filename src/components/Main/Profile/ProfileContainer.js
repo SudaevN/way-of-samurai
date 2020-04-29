@@ -1,35 +1,27 @@
 import React from 'react';
-import StoreContext from "../../../storeContext";
 import Profile from "./Profile";
 import {addPostActionCreator, refreshPostActionCreator} from "../../../redux/profile-reducer";
 import Post from "./Posts/Post/Post";
+import {connect} from "react-redux";
 
 
-const ProfileContainer = () => {
-
-    return (
-        <StoreContext.Consumer>
-            {
-                (store) => {
-                    let state = store.getState().postsData;
-                    let newPostText = state.newPostText;
-                    let postsElements = state.dart.map(post => <Post key={post.postId} picUrl={post.picUrl} title={post.title} date={post.date} text={post.text}/>).reverse();
-
-                    let refreshPostText = (newText) => {
-                        let action = refreshPostActionCreator(newText);
-                        store.dispatch(action);
-                    };
-                    let addPost = () => {
-                        store.dispatch(addPostActionCreator());
-                    };
-
-                    return (
-                        <Profile state={state} refreshPostText={refreshPostText} addPost={addPost} newPostText={newPostText} postsElements={postsElements} />
-                    )
-                }
-            }
-        </StoreContext.Consumer>
-    );
+const mapStateToProps = (state) => {
+    return {
+        newPostText: state.postsData.newPostText,
+        postsElements: state.postsData.dart.map(post => <Post key={post.postId} picUrl={post.picUrl} title={post.title} date={post.date} text={post.text}/>).reverse()
+    }
 };
+const mapDispatchToProps = (dispatch) => {
+    return {
+        refreshPostText: (newText) => {
+            dispatch(refreshPostActionCreator(newText));
+        },
+        addPost: () => {
+            dispatch(addPostActionCreator());
+        }
+    }
+};
+
+const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile);
 
 export default ProfileContainer;

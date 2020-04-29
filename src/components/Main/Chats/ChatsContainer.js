@@ -1,21 +1,14 @@
 import React from 'react';
 import Chats from "./Chats";
-import StoreContext from "../../../storeContext";
 import Chat from "./Chat/Chat";
+import {connect} from "react-redux";
 
-const ChatsContainer = () => {
-
-    return (
-        <StoreContext.Consumer>
-            {
-                (store) => {
-                    let chatsElements = store.getState().chatsData.map( chat => <Chat key={chat.chatId} picUrl={chat.picUrl} text={chat.message}/>);
-
-                    return <Chats chatsElements={chatsElements}/>
-                }
-            }
-        </StoreContext.Consumer>
-    )
+const mapStateToProps = (state) => {
+    return {
+        chatsElements: state.chatsData.map(chat => <Chat key={chat.chatId} picUrl={chat.picUrl} text={chat.message}/>)
+    }
 };
+
+const ChatsContainer = connect(mapStateToProps)(Chats);
 
 export default ChatsContainer;

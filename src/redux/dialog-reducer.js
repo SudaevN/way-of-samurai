@@ -37,13 +37,18 @@ const dialogReducer = (state = initialState, action) => {
                     authorAva: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS2jv29amhL_Fikcw4cIv1QB9FRcDOiO2DsU8q2t1Z1wCBYMFWK&usqp=CAU",
                     message: state.newMessageText
                 };
-                state.luke.push(newMessage);
-                state.newMessageText = '';
-            };
-            return state;
+
+                return {
+                    ...state,
+                    luke: [...state.luke, newMessage],
+                    newMessageText: ''
+                }
+            }
         case REFRESH_MESSAGE_TEXTAREA:
-            state.newMessageText = action.text;
-            return state;
+            return {
+                ...state,
+                newMessageText: action.text
+            };
         default:
             return state;
     }
