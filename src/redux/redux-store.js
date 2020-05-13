@@ -6,7 +6,7 @@ import dialogReducer from "./dialog-reducer";
 import usersReduser from "./users-reducer";
 
 let reducers = combineReducers({
-    postsData: profileReducer,
+    profileData: profileReducer,
     chatsData: chatsReducer,
     contactsData: contactsReducer,
     dialogsData: dialogReducer,
@@ -14,5 +14,7 @@ let reducers = combineReducers({
 });
 
 let store = createStore(reducers);
+
+window.store = store;
 
 export default store;

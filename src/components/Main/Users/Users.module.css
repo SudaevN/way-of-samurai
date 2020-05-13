@@ -1,5 +1,6 @@
 .paginatorWrap {
     margin-bottom: 15px;
+    text-overflow: ellipsis;
 }
 .paginatorWrap span {
     display: inline-block;

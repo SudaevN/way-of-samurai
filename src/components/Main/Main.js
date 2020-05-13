@@ -15,7 +15,7 @@ const Main = () => {
             <Route path={'/users'} render={ () => <UsersContainer/> } />
             <Route path={'/chats'} render={ () => <ChatsContainer /> } />
             <Route path={'/contacts'} render={ () => <ContactsContainer /> } />
-            <Route path={'/profile'} render={ () => <ProfileContainer /> } />
+            <Route path={'/profile/:id'} render={ () => <ProfileContainer /> } />
             <Route path={'/dialog'} render={ () => <DialogContainer /> } />
         </div>
     );

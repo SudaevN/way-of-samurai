@@ -1,8 +1,9 @@
 const ADD_POST = 'ADD-POST';
 const REFRESH_POST_TEXT = 'REFRESH-POST-TEXT';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
-    dart: [
+    posts: [
         {
             postId: "1",
             picUrl: "https://i2.wp.com/www.small-screen.co.uk/wp-content/uploads/2019/11/anakin-skywalker.jpg",
@@ -18,19 +19,20 @@ let initialState = {
             date: "06.03.2020"
         }
     ],
-    newPostText: ''
+    newPostText: '',
+    profile: null
 };
 
 const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST: {
             let text = state.newPostText;
             if (text !== '') {
                 let date = new Date();
                 let postDate = date.toLocaleDateString();
                 let newPost = {
-                    postId: state.dart.length + 1,
+                    postId: state.posts.length + 1,
                     picUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/2a/SkywalkerFlagship-TU.png/revision/latest?cb=20150409051518",
                     title: "Without title",
                     text: state.newPostText,
@@ -38,20 +40,25 @@ const profileReducer = (state = initialState, action) => {
                 };
                 return {
                     ...state,
-                    dart: [...state.dart, newPost],
+                    posts: [...state.posts, newPost],
                     newPostText: ''
-                };
+                }
             }
-        case REFRESH_POST_TEXT:
+        }
+        case REFRESH_POST_TEXT: {
             return {
                 ...state,
                 newPostText: action.text
             };
+        }
+        case SET_USER_PROFILE:
+            return {...state, profile: action.profile};
         default:
             return state;
     }
 };
 
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const refreshPostActionCreator = (newPostText) => ({type: REFRESH_POST_TEXT, text: newPostText});
+export const addPost = () => ({type: ADD_POST});
+export const refreshPostText = (newPostText) => ({type: REFRESH_POST_TEXT, text: newPostText});
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export default profileReducer;

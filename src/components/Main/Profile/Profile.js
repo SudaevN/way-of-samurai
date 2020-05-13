@@ -6,10 +6,9 @@ import Posts from "./Posts/Posts";
 
 
 const Profile = (props) => {
-
     return (
         <div className={classes.profile}>
-            <ProfileInfo />
+            <ProfileInfo profile={props.profile}/>
             <Textarea refreshPostText={props.refreshPostText} addPost={props.addPost} newPostText={props.newPostText} />
             <Posts postsElements={props.postsElements}/>
         </div>
