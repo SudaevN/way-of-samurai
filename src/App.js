@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Header from "./components/Header/Header";
+import HeaderContainer from "./components/Header/HeaderContainer";
 import Navigation from "./components/Navigation/Navigation";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
@@ -9,7 +9,7 @@ import Footer from "./components/Footer/Footer";
 const App = () => {
     return (
         <div className="wrapApp">
-            <Header />
+            <HeaderContainer />
             <Navigation />
             <Main />
             <Footer />

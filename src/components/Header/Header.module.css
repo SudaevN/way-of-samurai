@@ -6,6 +6,11 @@
     font-family: 'Star Jedi';
     text-align: left;
     padding: 0 30px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .name {
@@ -13,4 +18,19 @@
     font-size: 32px;
     line-height: 60px;
     vertical-align: middle;
+    cursor: default;
+}
+
+.loginBlock {
+    font-family: Arial, sans-serif;
+}
+
+.loginBlock a {
+    text-decoration: none;
+    color: #f2f2f2;
+    font-weight: 400;
+}
+
+.loginBlock a:hover {
+    text-shadow: #f2f2f2 0 0 5px;
 }

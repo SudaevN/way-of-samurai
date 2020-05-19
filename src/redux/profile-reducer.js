@@ -1,6 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const REFRESH_POST_TEXT = 'REFRESH-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCING';
 
 let initialState = {
     posts: [
@@ -20,7 +21,8 @@ let initialState = {
         }
     ],
     newPostText: '',
-    profile: null
+    profile: null,
+    isFetching: false
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -53,6 +55,8 @@ const profileReducer = (state = initialState, action) => {
         }
         case SET_USER_PROFILE:
             return {...state, profile: action.profile};
+        case TOGGLE_IS_FETCHING:
+            return {...state, isFetching: action.isFetching};
         default:
             return state;
     }
@@ -61,4 +65,5 @@ const profileReducer = (state = initialState, action) => {
 export const addPost = () => ({type: ADD_POST});
 export const refreshPostText = (newPostText) => ({type: REFRESH_POST_TEXT, text: newPostText});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 export default profileReducer;
