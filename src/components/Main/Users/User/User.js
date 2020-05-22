@@ -14,7 +14,7 @@ const User = (props) => {
                     <span className={classes.status}>{props.status}</span>
                     <span className={classes.homePlanet}>{props.homePlanet}</span>
                 </div>
-                <button onClick={props.onClick} className={classes.friendBtn}>
+                <button disabled={props.followingInProgress} onClick={props.onClick} className={classes.friendBtn}>
                     {props.buttonText}
                 </button>
             </div>
