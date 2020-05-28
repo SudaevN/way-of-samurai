@@ -11,6 +11,6 @@ const Navigation = () => {
             <NavLink to="/users" className={classes.item}  activeClassName={classes.active}>Users</NavLink>
         </nav>
     )
-}
+};
 
 export default Navigation;

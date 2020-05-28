@@ -1,6 +1,9 @@
+import {profileAPI} from "../api/api";
+
 const ADD_POST = 'ADD-POST';
 const REFRESH_POST_TEXT = 'REFRESH-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_STATUS = 'SET_STATUS';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCING';
 
 let initialState = {
@@ -22,6 +25,7 @@ let initialState = {
     ],
     newPostText: '',
     profile: null,
+    status: '',
     isFetching: false
 };
 
@@ -55,6 +59,8 @@ const profileReducer = (state = initialState, action) => {
         }
         case SET_USER_PROFILE:
             return {...state, profile: action.profile};
+        case SET_STATUS:
+            return { ...state, status: action.status };
         case TOGGLE_IS_FETCHING:
             return {...state, isFetching: action.isFetching};
         default:
@@ -65,5 +71,36 @@ const profileReducer = (state = initialState, action) => {
 export const addPost = () => ({type: ADD_POST});
 export const refreshPostText = (newPostText) => ({type: REFRESH_POST_TEXT, text: newPostText});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
+export const setStatus = (status) => ({type: SET_STATUS, status});
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
+
+export const getProfile = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        profileAPI.getProfile(userId).then(response => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUserProfile(response.data));
+        })
+    }
+};
+
+export const getStatus = (userId) => {
+    return (dispatch) => {
+        profileAPI.getStatus(userId).then(response => {
+            dispatch(setStatus(response.data));
+        })
+    }
+};
+
+export const updateStatus = (status) => {
+    return (dispatch) => {
+        profileAPI.updateStatus(status).then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(setStatus(status));
+            }
+        })
+    }
+};
+
+
 export default profileReducer;

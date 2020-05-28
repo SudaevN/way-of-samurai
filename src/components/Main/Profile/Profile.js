@@ -8,11 +8,11 @@ import Posts from "./Posts/Posts";
 const Profile = (props) => {
     return (
         <div className={classes.profile}>
-            <ProfileInfo profile={props.profile}/>
-            <Textarea refreshPostText={props.refreshPostText} addPost={props.addPost} newPostText={props.newPostText} />
+            <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
+            <Textarea refreshPostText={props.refreshPostText} addPost={props.addPost} newPostText={props.newPostText}/>
             <Posts postsElements={props.postsElements}/>
         </div>
-    );
+    )
 };
 
 export default Profile;

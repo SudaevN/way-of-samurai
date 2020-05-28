@@ -13,6 +13,16 @@ export const usersAPI = {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => {
             return response.data;
         })
+    },
+    follow(userId) {
+        return instance.post(`follow/${userId}`, {}).then(response => {
+            return response.data.resultCode;
+        })
+    },
+    unfollow(userId) {
+        return instance.delete(`follow/${userId}`).then(response => {
+            return response.data.resultCode;
+        })
     }
 };
 
@@ -25,22 +35,13 @@ export const authAPI = {
 };
 
 export const profileAPI = {
-  getProfile(id) {
-      return instance.get(`profile/${id}`).then(response => {
-          return response.data;
-      })
-  }
-};
-
-export const followAPI = {
-    follow(id){
-        return instance.post(`follow/${id}`, {}).then(response => {
-            return response.data.resultCode;
-        })
+    getProfile(id) {
+        return instance.get(`profile/${id}`);
     },
-    unfollow(id){
-        return instance.delete(`follow/${id}`).then(response => {
-            return response.data.resultCode;
-        })
+    getStatus(userId) {
+        return instance.get(`profile/status/${userId}`);
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status`, {status: status});
     }
 };
