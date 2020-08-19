@@ -34,3 +34,21 @@
 .loginBlock a:hover {
     text-shadow: #f2f2f2 0 0 5px;
 }
+
+.usernameBlock {
+    position: relative;
+}
+
+.usernameBlock button {
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.usernameBlock:hover button {
+    opacity: 1;
+}

@@ -1,0 +1,15 @@
+.formControlPole input,
+.formControlPole textarea {
+  border: 1px solid #424242;
+  border-radius: 5px;
+  resize: none;
+}
+
+.formControlPole.error input,
+.formControlPole.error textarea {
+  border-color: #fe0000;
+}
+
+.formControlPole.error span {
+  color: #fe0000;
+}

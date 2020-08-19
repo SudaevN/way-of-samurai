@@ -8,7 +8,6 @@ import {
     getStatus,
     updateStatus,
     addPost,
-    refreshPostText,
     toggleIsFetching
 } from "../../../redux/profile-reducer";
 import {withRouter} from "react-router-dom";
@@ -43,7 +42,6 @@ const mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {
-        refreshPostText,
         addPost,
         setUserProfile,
         toggleIsFetching,

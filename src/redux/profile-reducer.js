@@ -1,7 +1,6 @@
 import {profileAPI} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
-const REFRESH_POST_TEXT = 'REFRESH-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCING';
@@ -23,7 +22,6 @@ let initialState = {
             date: "06.03.2020"
         }
     ],
-    newPostText: '',
     profile: null,
     status: '',
     isFetching: false
@@ -33,7 +31,7 @@ const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_POST: {
-            let text = state.newPostText;
+            let text = action.newPostText;
             if (text !== '') {
                 let date = new Date();
                 let postDate = date.toLocaleDateString();
@@ -41,26 +39,19 @@ const profileReducer = (state = initialState, action) => {
                     postId: state.posts.length + 1,
                     picUrl: "https://vignette.wikia.nocookie.net/starwars/images/2/2a/SkywalkerFlagship-TU.png/revision/latest?cb=20150409051518",
                     title: "Without title",
-                    text: state.newPostText,
+                    text: text,
                     date: postDate
                 };
                 return {
                     ...state,
-                    posts: [...state.posts, newPost],
-                    newPostText: ''
+                    posts: [...state.posts, newPost]
                 }
             }
-        }
-        case REFRESH_POST_TEXT: {
-            return {
-                ...state,
-                newPostText: action.text
-            };
         }
         case SET_USER_PROFILE:
             return {...state, profile: action.profile};
         case SET_STATUS:
-            return { ...state, status: action.status };
+            return {...state, status: action.status};
         case TOGGLE_IS_FETCHING:
             return {...state, isFetching: action.isFetching};
         default:
@@ -68,8 +59,7 @@ const profileReducer = (state = initialState, action) => {
     }
 };
 
-export const addPost = () => ({type: ADD_POST});
-export const refreshPostText = (newPostText) => ({type: REFRESH_POST_TEXT, text: newPostText});
+export const addPost = (newPostText) => ({type: ADD_POST, newPostText});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const setStatus = (status) => ({type: SET_STATUS, status});
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
