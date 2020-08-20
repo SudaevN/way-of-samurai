@@ -17,7 +17,7 @@ import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        let userId = this.props.match.params.userId ? this.props.match.params.userId : 8071;
+        let userId = this.props.match.params.userId ? this.props.match.params.userId : this.props.authorizedUserId;
 
         this.props.getProfile(userId);
         this.props.getStatus(userId);
@@ -37,6 +37,8 @@ const mapStateToProps = (state) => {
         status: state.profileData.status,
         postsElements: state.profileData.posts.map(post =>
             <Post key={post.postId} picUrl={post.picUrl} title={post.title} date={post.date} text={post.text}/>).reverse(),
+        authorizedUserId: state.auth.userId,
+        isAuth: state.auth.isAuth
     }
 };
 
