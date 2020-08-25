@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./ProfileInfo.module.css";
 import Preloader from "../../../common/Preloader/Preloader";
 import avatarEmpty from "../../../../assets/img/no_photo.png";
-import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 
 
 const ProfileInfo = (props) => {
@@ -19,7 +19,7 @@ const ProfileInfo = (props) => {
                 </div>
                 <div className={classes.profileDescription}>
                     <span className={classes.profileName}>{props.profile.fullName}</span>
-                    <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+                    <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
 
                 </div>
             </div>
