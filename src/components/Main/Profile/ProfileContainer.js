@@ -18,6 +18,10 @@ import {compose} from "redux";
 class ProfileContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.match.params.userId ? this.props.match.params.userId : this.props.authorizedUserId;
+        debugger;
+        if(!userId) {
+            this.props.history.push("/lofin");
+        }
 
         this.props.getProfile(userId);
         this.props.getStatus(userId);
