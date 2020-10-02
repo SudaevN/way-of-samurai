@@ -2,6 +2,9 @@ import React from "react";
 import Contact from "./Contact/Contact";
 import Contacts from "./Contacts";
 import {connect} from "react-redux";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
+import {compose} from "redux";
+import {withRouter} from "react-router-dom";
 
 const mapStateToProps = (state) => {
     return {
@@ -11,4 +14,8 @@ const mapStateToProps = (state) => {
 
 const ContactsContainer = connect(mapStateToProps)(Contacts)
 
-export default ContactsContainer;
+export default compose(
+  connect(mapStateToProps),
+  withRouter,
+  withAuthRedirect
+)(ContactsContainer);
