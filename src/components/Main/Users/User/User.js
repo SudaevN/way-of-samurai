@@ -12,7 +12,6 @@ const User = (props) => {
                 <div className={classes.aboutUser}>
                     <span className={classes.name}>{props.name}</span>
                     <span className={classes.status}>{props.status}</span>
-                    <span className={classes.homePlanet}>{props.homePlanet}</span>
                 </div>
                 <button disabled={props.disabled} onClick={props.onClick} className={classes.friendBtn}>
                     {props.buttonText}

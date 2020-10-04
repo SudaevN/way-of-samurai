@@ -47,6 +47,7 @@ const profileReducer = (state = initialState, action) => {
                     posts: [...state.posts, newPost]
                 }
             }
+            break;
         }
         case SET_USER_PROFILE:
             return {...state, profile: action.profile};
@@ -65,30 +66,27 @@ export const setStatus = (status) => ({type: SET_STATUS, status});
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 
 export const getProfile = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true));
-        profileAPI.getProfile(userId).then(response => {
-            dispatch(toggleIsFetching(false));
-            dispatch(setUserProfile(response.data));
-        })
+        const response = await profileAPI.getProfile(userId);
+        dispatch(toggleIsFetching(false));
+        dispatch(setUserProfile(response.data));
     }
 };
 
 export const getStatus = (userId) => {
-    return (dispatch) => {
-        profileAPI.getStatus(userId).then(response => {
-            dispatch(setStatus(response.data));
-        })
+    return async (dispatch) => {
+        const response = await profileAPI.getStatus(userId);
+        dispatch(setStatus(response.data));
     }
 };
 
 export const updateStatus = (status) => {
-    return (dispatch) => {
-        profileAPI.updateStatus(status).then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setStatus(status));
-            }
-        })
+    return async (dispatch) => {
+        const response = await profileAPI.updateStatus(status);
+        if (response.data.resultCode === 0) {
+            dispatch(setStatus(status));
+        }
     }
 };
 

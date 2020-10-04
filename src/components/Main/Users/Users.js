@@ -2,26 +2,13 @@ import React from "react";
 import classes from "./Users.module.css";
 import avatarEmpty from "../../../assets/img/no_photo.png";
 import User from "./User/User";
+import Pagination from "../../common/Pagination/Pagination";
 
-let Users = (props) => {
-
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    let pages = [];
-
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
-    }
+let Users = ({totalUsersCount, pageSize, currentPage, onPageChange, ...props}) => {
 
     return (
         <div className={classes.usersBox}>
-            <div className={classes.paginatorWrap}>
-                {pages.map(n => {
-                    return (props.currentPage - 3 <= n && n <= props.currentPage + 3) ?
-                        <span key={n} className={props.currentPage === n ? classes.selectedPage : undefined} onClick={(e) => {
-                            props.onPageChange(n)
-                        }}>{n}</span> : null
-                })}
-            </div>
+            <Pagination totalUsersCount={totalUsersCount} pageSize={pageSize} currentPage={currentPage} onPageChange={onPageChange} />
             {props.users.map((item) =>
                 <User key={item.id}
                       id={item.id}

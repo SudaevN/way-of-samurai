@@ -40,6 +40,7 @@ const dialogReducer = (state = initialState, action) => {
                     luke: [...state.luke, newMessage],
                 }
             }
+            break;
         default:
             return state;
     }

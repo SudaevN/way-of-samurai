@@ -24,9 +24,9 @@ const Login = (props) => {
     )
 };
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <Field name={"email"} placeholder={"Email"} component={Input} validate={[required]} />
             </div>
@@ -36,7 +36,7 @@ const LoginForm = (props) => {
             <div>
                 <Field name={"rememberMe"} type={"checkbox"} component={Input} /> Remember me
             </div>
-            {props.error && <div className={classes.errorMessage}>{props.error}</div>}
+            {error && <div className={classes.errorMessage}>{error}</div>}
             <div>
                 <button>Login</button>
             </div>
@@ -51,6 +51,6 @@ const LoginReduxForm = reduxForm({
 
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth
-})
+});
 
 export default connect(mapStateToProps, {login})(Login);
