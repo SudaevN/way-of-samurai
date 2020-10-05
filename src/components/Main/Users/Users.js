@@ -4,11 +4,11 @@ import avatarEmpty from "../../../assets/img/no_photo.png";
 import User from "./User/User";
 import Pagination from "../../common/Pagination/Pagination";
 
-let Users = ({totalUsersCount, pageSize, currentPage, onPageChange, ...props}) => {
+let Users = ({totalUsersCount, pageSize, portionSize, currentPage, onPageChange, ...props}) => {
 
     return (
         <div className={classes.usersBox}>
-            <Pagination totalUsersCount={totalUsersCount} pageSize={pageSize} currentPage={currentPage} onPageChange={onPageChange} />
+            <Pagination totalUsersCount={totalUsersCount} pageSize={pageSize} currentPage={currentPage} onPageChange={onPageChange} portionSize={portionSize} />
             {props.users.map((item) =>
                 <User key={item.id}
                       id={item.id}
